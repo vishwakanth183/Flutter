@@ -1,7 +1,10 @@
 import 'dart:math';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lootify/src/components/home/explore_list.dart';
+import 'package:lootify/src/components/home/home_slider.dart';
+import 'package:lootify/src/components/home/shoes/shoes.dart';
+import 'package:lootify/src/components/home/trending/trending.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,75 +27,26 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(height: 20),
-        Container(
-          padding: const EdgeInsets.only(top: 30, bottom: 30),
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              offset: const Offset(2.0, 2.0),
-              blurRadius: 10.0,
-              spreadRadius: 2.0,
-            ),
-          ]),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 200.0,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  // autoPlayAnimationDuration: const Duration(seconds: 30),
-                  enableInfiniteScroll: true,
-                  enlargeFactor: double.infinity,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      currentImageIndex = index;
-                    });
-                  },
-                ),
-                items: imagesArray.map((currentImage) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image.network(
-                          imagesArray[currentImageIndex],
-                          fit: BoxFit.cover,
-                          width: 350,
-                          alignment: Alignment.center,
-                        ),
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
-              Positioned(
-                bottom: 10,
-                child: DotsIndicator(
-                  onTap: (position) {
-                    setState(() {
-                      currentImageIndex = (position).toInt();
-                    });
-                  },
-                  dotsCount: imagesArray.length,
-                  position: currentImageIndex.toDouble(),
-                  decorator: const DotsDecorator(
-                    activeColor: Colors.blue,
-                    size: Size.square(8.0),
-                    activeSize: Size(16.0, 8.0),
-                    spacing: EdgeInsets.symmetric(horizontal: 4.0),
-                  ),
-                ),
-              ),
-            ],
-          ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(
+          "Lootify Home",
+          style: GoogleFonts.poppins(),
         ),
-      ],
+      ),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [],
+        body: ListView(children: const [
+          SizedBox(height: 10),
+          HomeSlider(),
+          ExploreListSection(),
+          SizedBox(
+            height: 10,
+          ),
+          Trending(),
+        ]),
+      ),
     );
   }
 }
