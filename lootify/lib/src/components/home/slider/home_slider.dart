@@ -28,14 +28,14 @@ class _HomeSliderComponent extends State<HomeSlider> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 30, bottom: 30),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.2),
-          offset: const Offset(2.0, 2.0),
-          blurRadius: 10.0,
-          spreadRadius: 2.0,
-        ),
-      ]),
+      // decoration: BoxDecoration(boxShadow: [
+      //   BoxShadow(
+      //     color: Colors.grey.withOpacity(0.2),
+      //     offset: const Offset(2.0, 2.0),
+      //     blurRadius: 10.0,
+      //     spreadRadius: 2.0,
+      //   ),
+      // ]),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [

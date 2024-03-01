@@ -1,32 +1,50 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lootify/src/components/home/explore_list.dart';
-import 'package:lootify/src/components/home/home_slider.dart';
-import 'package:lootify/src/components/home/shoes/shoes.dart';
-import 'package:lootify/src/components/home/trending/trending.dart';
+import 'package:lootify/src/components/home/explore/explore_list.dart';
+import 'package:lootify/src/components/home/home_reusable/blueprint_category.dart';
+import 'package:lootify/src/components/home/home_reusable/category_list.dart';
+import 'package:lootify/src/components/home/slider/home_slider.dart';
+import 'package:lootify/src/components/home/lootify_categories/lootify_category.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
+List<Widget> getLootifyCategories(List<Category> categories) {
+  return categories
+      .map((category) => LootifyCategoryTemplate(
+            trendingImages: category.images,
+            categoryName: category.name,
+          ))
+      .toList();
 }
 
-class _HomePageState extends State<HomePage> {
-  var randomizer = Random();
-  int currentImageIndex = 0;
+const sampleImages = [
+  "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=600"
+];
 
-  final List<String> imagesArray = [
-    "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/848618/pexels-photo-848618.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/863977/pexels-photo-863977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/63249/stefan-bradl-motogp-racing-racing-bike-63249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg?auto=compress&cs=tinysrgb&w=600",
-  ];
+List<Widget> dynamic = getLootifyCategories(categoryList);
 
+const List<Widget> categories = [
+  HomeSlider(),
+  ExploreListSection(),
+  LootifyCategoryTemplate(
+      trendingImages: sampleImages, categoryName: "Trending"),
+  LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Shoes"),
+  LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Bags"),
+  LootifyCategoryTemplate(
+      trendingImages: sampleImages, categoryName: "Mens collection"),
+  LootifyCategoryTemplate(
+      trendingImages: sampleImages, categoryName: "Womens collection"),
+
+  // getLootifyCategories(categoryList)
+];
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -35,18 +53,11 @@ class _HomePageState extends State<HomePage> {
           style: GoogleFonts.poppins(),
         ),
       ),
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [],
-        body: ListView(children: const [
-          SizedBox(height: 10),
-          HomeSlider(),
-          ExploreListSection(),
-          SizedBox(
-            height: 10,
-          ),
-          Trending(),
-        ]),
-      ),
+      body: ListView.builder(
+          itemCount: categories.length,
+          itemBuilder: (context, index) {
+            return categories[index];
+          }),
     );
   }
 }

@@ -9,6 +9,7 @@ class ExploreListSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 130,
+      margin: const EdgeInsets.only(bottom: 20),
       alignment: Alignment.center,
       decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [

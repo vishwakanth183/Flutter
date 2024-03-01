@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomImageElement extends StatelessWidget {
   const CustomImageElement({super.key, required this.imageUrl});
@@ -29,9 +28,12 @@ class CustomImageElement extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Text(
-              "Category name",
-              style: GoogleFonts.poppins(),
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: const Text(
+                "Category name",
+                style: TextStyle(fontFamily: 'Poppins'),
+              ),
             )
           ],
         ));
