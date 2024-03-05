@@ -26,23 +26,22 @@ const sampleImages = [
 
 List<Widget> dynamic = getLootifyCategories(categoryList);
 
-const List<Widget> categories = [
-  HomeSlider(),
-  ExploreListSection(),
-  LootifyCategoryTemplate(
-      trendingImages: sampleImages, categoryName: "Trending"),
-  LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Shoes"),
-  LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Bags"),
-  LootifyCategoryTemplate(
-      trendingImages: sampleImages, categoryName: "Mens collection"),
-  LootifyCategoryTemplate(
-      trendingImages: sampleImages, categoryName: "Womens collection"),
-
-  // getLootifyCategories(categoryList)
-];
-
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  List<Widget> categories = [
+    const HomeSlider(),
+    const ExploreListSection(),
+    const LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Trending"),
+    const LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Shoes"),
+    const LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Bags"),
+    const LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Mens collection"),
+    const LootifyCategoryTemplate(trendingImages: sampleImages, categoryName: "Womens collection"),
+
+    // getLootifyCategories(categoryList)
+  ];
+
   @override
   Widget build(context) {
     return Scaffold(
