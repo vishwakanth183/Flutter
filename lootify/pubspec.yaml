@@ -86,6 +86,8 @@ flutter:
     - family: Righteous
       fonts:
         - asset: fonts/Righteous.ttf
+  assets:
+    - assets/penguin.png
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

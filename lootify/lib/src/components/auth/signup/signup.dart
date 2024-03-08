@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:lootify/src/components/auth/lootify_auth_card.dart';
+import 'package:lootify/src/components/auth/lootify_auth_header.dart';
 
 var format = DateFormat.yMMMd();
 
@@ -70,108 +72,117 @@ class _SignupState extends State<Signup> {
           style: TextStyle(fontFamily: "Poppins"),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            TextField(
-              controller: _firstnameController,
-              // maxLength: 20,
-              decoration: const InputDecoration(
-                label: Text("Firstname"),
-                // hintText: "Enter your first name"
-              ),
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            TextField(
-              controller: _lastnameController,
-              // maxLength: 20,
-              decoration: const InputDecoration(
-                label: Text("Lastname"),
-              ),
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            // Row(
-            //   children: [
-            //     DropdownButton(
-            //         style: Theme.of(context).textTheme.bodyMedium,
-            //         value: _selectedGender,
-            //         items: _genderList.map((listValue) => DropdownMenuItem(value: listValue, child: Text(listValue.toString()))).toList(),
-            //         hint: const Text("Select Gender"),
-            //         onChanged: (value) {
-            //           setState(() {
-            //             _selectedGender = value.toString();
-            //           });
-            //         }),
-            //   ],
-            // ),
-            TextField(
-              controller: _emailController,
-              style: Theme.of(context).textTheme.bodyMedium,
-              decoration: const InputDecoration(
-                label: Text("Email"),
-              ),
-            ),
-            TextField(
-              controller: _phoneNumberController,
-              style: Theme.of(context).textTheme.bodyMedium,
-              decoration: const InputDecoration(
-                label: Text("Contact"),
-              ),
-            ),
-            TextField(
-                controller: _passwordController,
-                obscureText: showPassword,
-                decoration: const InputDecoration(
-                  label: Text("Password"),
-                  // suffix: IconButton(
-                  //   onPressed: handlePasswordVisbility,
-                  //   icon: Icon(
-                  //     !showPassword
-                  //         ? Icons.no_encryption_gmailerrorred_rounded
-                  //         : Icons.remove_red_eye,
-                  //     color: Colors.purple,
-                  //   ),
-                  // ),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              const LootifyAuthHeader(),
+              LootifyAuthCard(
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: _firstnameController,
+                      // maxLength: 20,
+                      decoration: const InputDecoration(
+                        label: Text("Firstname"),
+                        // hintText: "Enter your first name"
+                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    TextField(
+                      controller: _lastnameController,
+                      // maxLength: 20,
+                      decoration: const InputDecoration(
+                        label: Text("Lastname"),
+                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    // Row(
+                    //   children: [
+                    //     DropdownButton(
+                    //         style: Theme.of(context).textTheme.bodyMedium,
+                    //         value: _selectedGender,
+                    //         items: _genderList.map((listValue) => DropdownMenuItem(value: listValue, child: Text(listValue.toString()))).toList(),
+                    //         hint: const Text("Select Gender"),
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             _selectedGender = value.toString();
+                    //           });
+                    //         }),
+                    //   ],
+                    // ),
+                    TextField(
+                      controller: _emailController,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      decoration: const InputDecoration(
+                        label: Text("Email"),
+                      ),
+                    ),
+                    TextField(
+                      controller: _phoneNumberController,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      decoration: const InputDecoration(
+                        label: Text("Contact"),
+                      ),
+                    ),
+                    TextField(
+                        controller: _passwordController,
+                        obscureText: showPassword,
+                        decoration: const InputDecoration(
+                          label: Text("Password"),
+                          // suffix: IconButton(
+                          //   onPressed: handlePasswordVisbility,
+                          //   icon: Icon(
+                          //     !showPassword
+                          //         ? Icons.no_encryption_gmailerrorred_rounded
+                          //         : Icons.remove_red_eye,
+                          //     color: Colors.purple,
+                          //   ),
+                          // ),
+                        ),
+                        style: Theme.of(context).textTheme.bodyMedium),
+                    TextField(
+                      controller: _confirmPasswordController,
+                      obscureText: showConfirmPassword,
+                      decoration: const InputDecoration(
+                        label: Text("Confirm Password"),
+                        // suffix: IconButton(
+                        //   onPressed: handleConfirmPasswordVisbility,
+                        //   style: ButtonStyle(
+                        //     padding: MaterialStateProperty.all(EdgeInsets.zero),
+                        //     // backgroundColor: MaterialStateColor.resolveWith(
+                        //     //     (states) => Colors.amber),
+                        //   ),
+                        //   alignment: Alignment.center,
+                        //   icon: Icon(
+                        //       !showPassword
+                        //           ? Icons.no_encryption_gmailerrorred_rounded
+                        //           : Icons.remove_red_eye,
+                        //       color: Colors.purple),
+                        // ),
+                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    TextField(
+                      readOnly: true,
+                      controller: _dateController,
+                      decoration: InputDecoration(
+                          label: const Text("DOB"),
+                          suffixIcon: IconButton(
+                              onPressed: handleDOB,
+                              icon: const Icon(
+                                Icons.calendar_month_sharp,
+                                color: Colors.purple,
+                              ))),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    Container(margin: const EdgeInsets.only(top: 10), child: ElevatedButton(onPressed: () {}, child: const Text("Register")))
+                  ],
                 ),
-                style: Theme.of(context).textTheme.bodyMedium),
-            TextField(
-              controller: _confirmPasswordController,
-              obscureText: showConfirmPassword,
-              decoration: const InputDecoration(
-                label: Text("Confirm Password"),
-                // suffix: IconButton(
-                //   onPressed: handleConfirmPasswordVisbility,
-                //   style: ButtonStyle(
-                //     padding: MaterialStateProperty.all(EdgeInsets.zero),
-                //     // backgroundColor: MaterialStateColor.resolveWith(
-                //     //     (states) => Colors.amber),
-                //   ),
-                //   alignment: Alignment.center,
-                //   icon: Icon(
-                //       !showPassword
-                //           ? Icons.no_encryption_gmailerrorred_rounded
-                //           : Icons.remove_red_eye,
-                //       color: Colors.purple),
-                // ),
-              ),
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            TextField(
-              readOnly: true,
-              controller: _dateController,
-              decoration: InputDecoration(
-                  label: const Text("DOB"),
-                  suffixIcon: IconButton(
-                      onPressed: handleDOB,
-                      icon: const Icon(
-                        Icons.calendar_month_sharp,
-                        color: Colors.purple,
-                      ))),
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Container(margin: const EdgeInsets.only(top: 10), child: ElevatedButton(onPressed: () {}, child: const Text("Register")))
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
