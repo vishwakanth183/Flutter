@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lootify/src/components/auth/signin/signin.dart';
 // import 'package:lootify/src/components/auth/signup/signup.dart';
 // import 'package:lootify/src/components/home/home.dart';
-import 'package:lootify/stacks/bottomTab/bottom_tab.dart';
 // import 'package:lootify/src/components/auth/signup/signup.dart';
 // import 'package:lootify/src/components/home/home.dart';
 // import 'package:lootify/src/components/splash/splash.dart';

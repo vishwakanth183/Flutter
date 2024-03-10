@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lootify/src/components/auth/signup/signup.dart';
+import 'package:lootify/src/components/cart/cart.dart';
 import 'package:lootify/src/components/home/home.dart';
+import 'package:lootify/src/components/products/productList/product_list.dart';
+import 'package:lootify/src/components/profile/profile.dart';
 
 class LootifyBottomTab extends StatefulWidget {
   const LootifyBottomTab({super.key});
@@ -16,11 +18,11 @@ class LootifyBottomComponent extends State<LootifyBottomTab> {
     if (index == 0) {
       currentWidget = HomePage();
     } else if (index == 1) {
-      currentWidget = const Signup();
+      currentWidget = const ProductList();
     } else if (index == 2) {
-      currentWidget = HomePage();
+      currentWidget = const Cart();
     } else {
-      currentWidget = const Signup();
+      currentWidget = const Profile();
     }
   }
 

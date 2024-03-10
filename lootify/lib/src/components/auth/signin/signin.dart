@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:lootify/src/components/auth/forgotPassword/forgotPassword.dart';
+import 'package:lootify/src/components/auth/forgotPassword/forgot_password.dart';
 import 'package:lootify/src/components/auth/lootify_auth_card.dart';
 import 'package:lootify/src/components/auth/lootify_auth_header.dart';
 import 'package:lootify/src/components/auth/signup/signup.dart';
